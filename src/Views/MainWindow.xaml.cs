@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Blackjack_DealersPerspective.MVVM.Views
+namespace Blackjack_DealersPerspective.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Blackjack_DealersPerspective.Models;
 
 namespace Blackjack_DealersPerspective.Views
 {
@@ -22,6 +23,7 @@ namespace Blackjack_DealersPerspective.Views
         public MainWindow()
         {
             InitializeComponent();
+            _ = new Deck();
         }
     }
 }

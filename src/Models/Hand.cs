@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace Blackjack_DealersPerspective.Models
         }
 
         // Public accessor property for _cards
-        public List<Card> Cards => _cards;
+        public ReadOnlyCollection<Card> Cards => _cards.AsReadOnly();
 
         // public property that returns the combined value of all cards in '_cards', according to Blackjack rules.
         public int Value

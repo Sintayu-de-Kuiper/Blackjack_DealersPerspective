@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,10 @@ namespace Blackjack_DealersPerspective.Models
         }
 
         // Public accessor property for _cards
-        public List<Card> Cards => _cards;
+        public ReadOnlyCollection<Card> Cards => _cards.AsReadOnly();
+
+        // Number of cards in '_cards'
+        public int NumberOfCards => _cards.Count;
 
         // Shuffle cards
         public void Shuffle()
@@ -52,6 +56,14 @@ namespace Blackjack_DealersPerspective.Models
             }
             else
                 throw new InvalidOperationException("DrawCard: Deck is empty");
+        }
+
+        // Returns the whole tray of cards and removes them locally
+        public List<Card> GetAllCards()
+        {
+            List<Card> cardsToReturn = new(_cards);
+            _cards.Clear();
+            return cardsToReturn;
         }
     }
 }

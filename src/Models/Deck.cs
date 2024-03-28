@@ -9,12 +9,12 @@ namespace Blackjack_DealersPerspective.Models
 {
     public class Deck
     {
-        public List<Card> Cards { get; private set; }
+        private List<Card> _cards;
         private readonly Random random;
 
         public Deck()
         {
-            Cards = [];
+            _cards = [];
             random = new();
 
             // Initalising the deck by creating all 52 cards
@@ -22,29 +22,31 @@ namespace Blackjack_DealersPerspective.Models
             {
                 foreach (Card.RANK rank in Enum.GetValues(typeof(Card.RANK)))
                 {
-                    Cards.Add(new Card(suit, rank));
+                    _cards.Add(new Card(suit, rank));
                 }
             }
         }
 
+        public List<Card> Cards => _cards;
+
         public void Shuffle()
         {
             // Fisher Yate shuffling algorithm
-            int numOfCards = Cards.Count;
+            int numOfCards = _cards.Count;
             for(int i = 0; i < numOfCards; i++)
             {
                 int r = i + random.Next(numOfCards - i);
-                Card tempCard = Cards[i];
-                Cards[i] = Cards[r];
-                Cards[r] = tempCard;
+                Card tempCard = _cards[i];
+                _cards[i] = _cards[r];
+                _cards[r] = tempCard;
             }
         }
 
-        public Card DealCard()
+        public Card DrawCard()
         {
-            Card cardToDeal = Cards[0];
-            Cards.RemoveAt(0);
-            return cardToDeal;
+            Card cardToDraw = _cards[0];
+            _cards.RemoveAt(0);
+            return cardToDraw;
         }
     }
 }

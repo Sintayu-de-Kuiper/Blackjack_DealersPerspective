@@ -18,7 +18,7 @@ namespace Blackjack_DealersPerspective.Models
 
         public enum RANK
         {
-            TWO = 2,
+            TWO,
             THREE,
             FOUR,
             FIVE,
@@ -27,9 +27,9 @@ namespace Blackjack_DealersPerspective.Models
             EIGHT,
             NINE,
             TEN,
-            JACK = 10,
-            QUEEN = 10,
-            KING = 10,
+            JACK,
+            QUEEN,
+            KING,
             ACE,
         }
 

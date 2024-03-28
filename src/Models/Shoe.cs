@@ -17,6 +17,9 @@ namespace Blackjack_DealersPerspective.Models
             _random = new Random();
         }
 
+        // Public accessor property for _cards
+        public List<Card> Cards => _cards;
+
         // Adds all cards from a Deck to the Shoe
         public void AddDeck(Deck deck)
         {

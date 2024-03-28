@@ -9,7 +9,7 @@ namespace Blackjack_DealersPerspective.Models
 {
     public class Deck
     {
-        private List<Card> _cards;
+        private readonly List<Card> _cards;
         private readonly Random random;
 
         public Deck()
@@ -27,26 +27,31 @@ namespace Blackjack_DealersPerspective.Models
             }
         }
 
+        // Public accessor property for _cards
         public List<Card> Cards => _cards;
 
+        // Shuffle cards
         public void Shuffle()
         {
             // Fisher Yate shuffling algorithm
-            int numOfCards = _cards.Count;
-            for(int i = 0; i < numOfCards; i++)
+            for (int currentIndex = 0; currentIndex < _cards.Count; currentIndex++)
             {
-                int r = i + random.Next(numOfCards - i);
-                Card tempCard = _cards[i];
-                _cards[i] = _cards[r];
-                _cards[r] = tempCard;
+                int swapIndex = currentIndex + random.Next(_cards.Count - currentIndex);
+                (_cards[currentIndex], _cards[swapIndex]) = (_cards[swapIndex], _cards[currentIndex]);
             }
         }
 
+        // Draw one card
         public Card DrawCard()
         {
-            Card cardToDraw = _cards[0];
-            _cards.RemoveAt(0);
-            return cardToDraw;
+            if (_cards.Count > 0)
+            {
+                Card cardToDraw = _cards[0];
+                _cards.RemoveAt(0);
+                return cardToDraw;
+            }
+            else
+                throw new InvalidOperationException("DrawCard: Deck is empty");
         }
     }
 }
